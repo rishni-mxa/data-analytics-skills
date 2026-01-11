@@ -241,42 +241,6 @@ Each skill has **clear scope**:
 - Complete workflow (start to finish)
 - Reusable (many applications)
 
-## 🤝 Contributing
-
-Want to add a skill or improve existing ones?
-
-### Adding a New Skill
-
-1. Identify the gap (what workflow isn't covered?)
-2. Define context requirements
-3. Build context gathering prompts
-4. Document workflow and outputs
-5. Test with real use cases
-6. Submit PR with examples
-
-### Improving Existing Skills
-
-Common enhancements:
-- Better context gathering questions
-- More comprehensive workflows
-- Additional output formats
-- Domain-specific adaptations
-- Error handling for edge cases
-
-## 📄 License
-
-MIT License - Use freely in commercial and non-commercial projects.
-
-## 🙏 Acknowledgments
-
-Built for data analytics teams who want to leverage AI effectively without sacrificing portability, transparency, or educational value.
-
-## 📞 Support
-
-- **Issues**: Report bugs or request features via GitHub Issues
-- **Discussions**: Share use cases and ask questions in Discussions
-- **Wiki**: Detailed guides and examples in the Wiki
-
 ## 🔗 Related Resources
 
 - [Claude Skills Documentation](https://docs.anthropic.com/claude/docs/skills)
@@ -287,4 +251,4 @@ Built for data analytics teams who want to leverage AI effectively without sacri
 
 **Version:** 1.0.0  
 **Last Updated:** January 2025  
-**Maintainer:** Data Analytics Community
+**Maintainer:** Nimrod Fisher
