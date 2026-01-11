@@ -242,24 +242,6 @@ Claude: [provides summary first, waits for direction]
 ### Explore All Skills
 Browse the [README](README.md) to see all 25 skills across 6 categories.
 
-### Customize for Your Team
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidance on:
-- Adding company-specific context
-- Creating custom skills
-- Building team context libraries
-
-### Join the Community
-- Share your use cases in Discussions
-- Report bugs or request features in Issues
-- Contribute improvements via Pull Requests
-
-## 📞 Need Help?
-
-- **Quick questions**: Check skill-specific SKILL.md files
-- **Broader questions**: Start a Discussion
-- **Bug reports**: Open an Issue
-- **Urgent problems**: Tag @maintainers
-
 ---
 
 **Ready to start?** Pick a skill from the [README](README.md) and try it with your data! 🚀
