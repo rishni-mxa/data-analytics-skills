@@ -11,7 +11,8 @@ import os
 import re
 from pathlib import Path
 
-BASE_PATH = Path("/home/claude/data-analytics-skills")
+# Use the directory containing this script as the base path
+BASE_PATH = Path(__file__).resolve().parent
 REQUIRED_SECTIONS = [
     "Quick Start",
     "Context Requirements",
@@ -70,10 +71,17 @@ def validate_skill(skill_path):
     if not skill_md.exists():
         return False, "SKILL.md not found"
     
+    # Read content with robust decoding across platforms
     try:
-        content = skill_md.read_text()
-    except Exception as e:
-        return False, f"Error reading file: {e}"
+        content = skill_md.read_text(encoding="utf-8")
+    except UnicodeDecodeError:
+        try:
+            content = skill_md.read_text(encoding="utf-8-sig")
+        except UnicodeDecodeError:
+            try:
+                content = skill_md.read_text(encoding="latin-1", errors="ignore")
+            except Exception as e:
+                return False, f"Error reading file: {e}"
     
     # Check frontmatter
     valid, msg = validate_frontmatter(content)

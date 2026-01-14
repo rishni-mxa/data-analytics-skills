@@ -1,169 +1,361 @@
 ---
 name: insight-synthesis
-description: Transform analysis outputs into structured business insights. Use when converting statistical findings into business recommendations, prioritizing insights by business impact, or structuring analysis narratives.
+description: Transform data findings into compelling insights. Use when converting analysis results into actionable insights, connecting findings to business impact, or preparing insights for stakeholder communication.
 ---
 
 # Insight Synthesis
 
 ## Quick Start
 
-This skill helps you transform analysis outputs into structured business insights.
+Convert raw analysis findings into clear, actionable insights that drive business decisions by connecting data patterns to business impact.
 
 ## Context Requirements
 
-Before proceeding, I need:
-
-1. **Analysis findings**: Key information needed for this analysis
-2. **Business context**: Key information needed for this analysis
-3. **Prioritization criteria**: Key information needed for this analysis
-4. **Action thresholds**: Key information needed for this analysis
+1. **Analysis Findings**: Raw results, statistics, patterns discovered
+2. **Business Context**: What the business cares about, current priorities
+3. **Audience**: Who needs these insights and what they'll do with them
+4. **Decision Framework**: What decisions these insights should inform
+5. **Constraints**: Limitations, caveats, confidence levels
 
 ## Context Gathering
 
-If any required context is missing from our conversation, I'll ask for it using these prompts:
+### For Findings:
+"Share your analysis results:
+- Key statistics and metrics
+- Patterns or trends found
+- Correlations discovered
+- Anomalies identified
+- Hypothesis test results
 
-### For Analysis findings:
-"To proceed with insight synthesis, I need to understand analysis findings.
+Example: 'Churn rate increased 15% in Q4. Mobile users churning 2x more than desktop. Correlation with recent app update.'"
 
-Please provide:
-- [Specific detail 1 about analysis findings]
-- [Specific detail 2 about analysis findings]
-- [Optional context that would help]"
+### For Business Context:
+"Help me understand business priorities:
+- Current goals/OKRs
+- Pain points being addressed
+- Strategic initiatives
+- Budget/resources available
+- Timeline for action
 
+This helps frame insights as actionable, not just interesting."
 
-### For Business context:
-"To proceed with insight synthesis, I need to understand business context.
+### For Audience:
+"Who will act on these insights?
+- **Executives**: High-level strategic implications
+- **Product team**: Feature/UX implications  
+- **Marketing**: Campaign/targeting implications
+- **Operations**: Process improvement implications
 
-Please provide:
-- [Specific detail 1 about business context]
-- [Specific detail 2 about business context]
-- [Optional context that would help]"
-
-
-### For Prioritization criteria:
-"To proceed with insight synthesis, I need to understand prioritization criteria.
-
-Please provide:
-- [Specific detail 1 about prioritization criteria]
-- [Specific detail 2 about prioritization criteria]
-- [Optional context that would help]"
-
-
-### Handling Partial Context
-
-If you can only provide some of the context:
-- I'll proceed with what's available and note limitations
-- I'll use industry standard defaults where appropriate
-- I'll ask clarifying questions as needed during the analysis
+Different audiences need different framing."
 
 ## Workflow
 
-### Step 1: Validate Context
+### Step 1: Structure Findings
 
-Before starting, I'll confirm:
-- [ ] All required context is available or has reasonable defaults
-- [ ] The scope and objectives are clear
-- [ ] Expected outputs align with your needs
+```python
+import pandas as pd
+import numpy as np
 
-### Step 2: Execute Core Analysis
+class InsightSynthesizer:
+    def __init__(self, analysis_name):
+        self.analysis_name = analysis_name
+        self.findings = []
+        self.insights = []
+    
+    def add_finding(self, finding_type, metric, value, context):
+        """Log an analysis finding"""
+        self.findings.append({
+            'type': finding_type,  # trend, comparison, correlation, anomaly
+            'metric': metric,
+            'value': value,
+            'context': context,
+            'business_impact': None,
+            'recommendation': None
+        })
+    
+    def convert_to_insight(self, finding_idx, impact, recommendation, confidence):
+        """Convert finding to actionable insight"""
+        finding = self.findings[finding_idx]
+        
+        insight = {
+            'finding': finding,
+            'impact': impact,
+            'recommendation': recommendation,
+            'confidence': confidence,
+            'priority': self._assess_priority(impact, confidence)
+        }
+        
+        self.insights.append(insight)
+        return insight
+    
+    def _assess_priority(self, impact, confidence):
+        """Determine insight priority"""
+        if 'high' in impact.lower() and confidence == 'high':
+            return 'critical'
+        elif 'high' in impact.lower() or confidence == 'high':
+            return 'high'
+        elif 'medium' in impact.lower():
+            return 'medium'
+        else:
+            return 'low'
 
-Following best practices for insight synthesis, I'll:
+# Initialize
+synthesizer = InsightSynthesizer("Q4 Churn Analysis")
 
-1. **Initial assessment** - Review provided context and data
-2. **Systematic execution** - Follow structured methodology
-3. **Quality checks** - Validate intermediate results
-4. **Progressive disclosure** - Share findings at logical checkpoints
+# Add findings
+synthesizer.add_finding(
+    finding_type='trend',
+    metric='Churn Rate',
+    value='15% increase in Q4',
+    context='Previous quarter was 8%, now 23%'
+)
 
-### Step 3: Synthesize Findings
+synthesizer.add_finding(
+    finding_type='comparison',
+    metric='Mobile vs Desktop Churn',
+    value='2x higher on mobile',
+    context='Mobile: 35% churn, Desktop: 17% churn'
+)
 
-I'll present results in a clear, actionable format:
-- Key findings prioritized by importance
-- Supporting evidence and visualizations
-- Recommendations with implementation guidance
-- Limitations and assumptions documented
+print("✅ Findings structured")
+```
 
-### Step 4: Iterate Based on Feedback
+### Step 2: Connect to Business Impact
 
-After presenting initial findings:
-- Address questions and dive deeper where needed
-- Refine analysis based on your feedback
-- Provide additional context or alternative approaches
+```python
+# Convert finding to insight with business context
+
+insight_1 = synthesizer.convert_to_insight(
+    finding_idx=0,
+    impact="High revenue risk: 15% churn increase = $2M ARR at risk. Accelerating trend suggests worsening if unaddressed.",
+    recommendation="Immediate win-back campaign for at-risk customers. Investigate root cause (recent product changes, competitor moves).",
+    confidence='high'
+)
+
+insight_2 = synthesizer.convert_to_insight(
+    finding_idx=1,
+    impact="Mobile represents 40% of user base. 2x churn rate means disproportionate loss of mobile users. Mobile-first strategy at risk.",
+    recommendation="Audit mobile app experience. Recent app update (v3.2.0) correlated with spike - consider rollback or hotfix.",
+    confidence='high'
+)
+
+print(f"✅ Created {len(synthesizer.insights)} actionable insights")
+```
+
+### Step 3: Apply Insight Framework
+
+```python
+def apply_insight_framework(finding, business_context):
+    """
+    Use So What? - Why? - Now What? framework
+    """
+    
+    insight = {}
+    
+    # SO WHAT? (Why it matters)
+    insight['so_what'] = f"This means {finding['value']} which affects {business_context['impact_area']}"
+    
+    # WHY? (Root cause hypothesis)
+    insight['why'] = f"Likely driven by {business_context['hypothesis']}"
+    
+    # NOW WHAT? (Action)
+    insight['now_what'] = f"We should {business_context['action']}"
+    
+    # Expected outcome
+    insight['expected_outcome'] = business_context.get('expected_outcome')
+    
+    return insight
+
+# Example
+finding = synthesizer.findings[0]
+context = {
+    'impact_area': 'monthly recurring revenue and growth targets',
+    'hypothesis': 'recent app update degrading mobile UX, competitor launched similar product',
+    'action': 'immediately investigate app update, run win-back campaign, monitor competitor',
+    'expected_outcome': 'Reduce churn to <10% within 60 days, recover $500K ARR'
+}
+
+structured_insight = apply_insight_framework(finding, context)
+
+print("\n📊 Structured Insight:")
+print(f"  SO WHAT: {structured_insight['so_what']}")
+print(f"  WHY: {structured_insight['why']}")
+print(f"  NOW WHAT: {structured_insight['now_what']}")
+```
+
+### Step 4: Prioritize Insights
+
+```python
+def prioritize_insights(insights):
+    """Rank insights by impact and urgency"""
+    
+    priority_map = {'critical': 4, 'high': 3, 'medium': 2, 'low': 1}
+    
+    # Sort by priority
+    sorted_insights = sorted(
+        insights,
+        key=lambda x: priority_map[x['priority']],
+        reverse=True
+    )
+    
+    print("\n🎯 Prioritized Insights:\n")
+    for i, insight in enumerate(sorted_insights, 1):
+        print(f"{i}. [{insight['priority'].upper()}] {insight['finding']['metric']}")
+        print(f"   Impact: {insight['impact'][:80]}...")
+        print(f"   Action: {insight['recommendation'][:80]}...")
+        print()
+    
+    return sorted_insights
+
+prioritized = prioritize_insights(synthesizer.insights)
+```
+
+### Step 5: Generate Executive Summary
+
+```python
+def generate_executive_summary(insights, analysis_name):
+    """Create concise executive summary"""
+    
+    summary = f"# Executive Summary: {analysis_name}\n\n"
+    
+    # Top 3 insights
+    summary += "## Key Insights\n\n"
+    for i, insight in enumerate(insights[:3], 1):
+        summary += f"**{i}. {insight['finding']['metric']}**\n"
+        summary += f"- Finding: {insight['finding']['value']}\n"
+        summary += f"- Impact: {insight['impact']}\n"
+        summary += f"- Action: {insight['recommendation']}\n\n"
+    
+    # Bottom line
+    summary += "## Bottom Line\n\n"
+    summary += f"Immediate action required on {len([i for i in insights if i['priority'] in ['critical', 'high']])} high-priority issues. "
+    summary += f"Estimated business impact: $2M+ ARR at risk if unaddressed.\n"
+    
+    return summary
+
+exec_summary = generate_executive_summary(prioritized, "Q4 Churn Analysis")
+print(exec_summary)
+```
 
 ## Context Validation
 
-Before executing the full workflow, I verify:
-
-- [ ] Context is sufficient for meaningful analysis
-- [ ] No contradictions in provided information  
-- [ ] Scope is well-defined and achievable
-- [ ] Expected outputs are clear
+- [ ] Findings are factually accurate
+- [ ] Business impact is realistic
+- [ ] Recommendations are actionable
+- [ ] Confidence levels are honest
+- [ ] Audience needs considered
 
 ## Output Template
 
 ```
-Insight Synthesis Analysis
-Generated: [timestamp]
+# Key Insights: Q4 Churn Analysis
 
-## Context Summary
-- [Key context item 1]
-- [Key context item 2]
-- [Key context item 3]
+## Critical Insight #1: Mobile Churn Crisis
 
-## Methodology
-[Brief description of approach taken]
+**Finding:** Mobile users churning at 2x rate of desktop (35% vs 17%)
 
-## Key Findings
-1. **Finding 1**: [Observation] - [Implication]
-2. **Finding 2**: [Observation] - [Implication]
-3. **Finding 3**: [Observation] - [Implication]
+**So What:**
+- Mobile = 40% of user base, disproportionate loss
+- Threatens mobile-first strategy
+- Concentrated in recent cohorts (post-app update)
 
-## Detailed Analysis
-[In-depth analysis with supporting evidence]
+**Why:**
+- App update v3.2.0 introduced performance issues
+- Competitors launched improved mobile apps
+- Mobile onboarding less effective
 
-## Recommendations
-1. **Recommendation 1**: [Action] - [Expected outcome]
-2. **Recommendation 2**: [Action] - [Expected outcome]
+**Now What:**
+1. IMMEDIATE: Rollback app to v3.1.9 (stable version)
+2. Week 1: Emergency UX audit of mobile experience
+3. Week 2: Launch mobile win-back campaign
+4. Month 1: Redesign mobile onboarding
 
-## Limitations & Assumptions
-- [Limitation or assumption 1]
-- [Limitation or assumption 2]
+**Expected Outcome:**
+Reduce mobile churn to <20% within 60 days, save $500K ARR
 
-## Next Steps
-1. [Suggested follow-up action 1]
-2. [Suggested follow-up action 2]
+**Confidence:** HIGH (validated with user feedback, correlates with app release)
+
+---
+
+## High Priority Insight #2: Churn Accelerating
+
+**Finding:** 15% increase in churn (8% → 23% in one quarter)
+
+**Impact:** $2M ARR at risk, undermines growth targets
+
+**Action:** Root cause investigation + retention programs
+
+**Confidence:** HIGH
 ```
 
-## Common Context Gaps & Solutions
+## Common Scenarios
 
-**Scenario: User requests insight synthesis without providing context**
-→ Response: "I can help with insight synthesis! To provide the most relevant analysis, I need [key context items]. Can you share [specific ask]?"
+### Scenario 1: "Turn analysis into exec presentation"
+→ Extract top 3-5 insights
+→ Frame with business impact
+→ Lead with recommendations
+→ Support with data
+→ Include next steps
 
-**Scenario: Partial context provided**
-→ Response: "I have [available context]. I'll proceed with [what's possible] and will note where additional context would improve the analysis."
+### Scenario 2: "Why should stakeholders care?"
+→ Connect to OKRs/goals
+→ Quantify business impact ($, customers, time)
+→ Show urgency (what happens if we don't act)
+→ Make recommendations concrete
+→ Provide confidence levels
 
-**Scenario: Unclear objectives**  
-→ Response: "To ensure my analysis meets your needs, can you clarify: What decisions will this inform? What format would be most useful?"
+### Scenario 3: "Too many findings to present"
+→ Prioritize by impact
+→ Group related findings
+→ Focus on actionable insights
+→ Save rest for appendix
+→ Tailor to audience
 
-**Scenario: Domain-specific terminology**
-→ Response: "I want to make sure I understand your terminology correctly. When you say [term], do you mean [interpretation]?"
+### Scenario 4: "Findings conflict or unclear"
+→ Acknowledge uncertainty
+→ Present alternative interpretations
+→ Recommend validation approach
+→ Provide provisional insights
+→ Set up next analysis
+
+### Scenario 5: "Create insight library"
+→ Document insight patterns
+→ Template common insight types
+→ Build metrics → insights mapping
+→ Enable self-service insights
+→ Track insight outcomes
+
+## Handling Missing Context
+
+**Just raw numbers, no context:**
+"I can see the data changed, but need business context:
+- Why do we care about this metric?
+- What's an acceptable range?
+- What can we actually do about it?
+Let's connect findings to business impact."
+
+**Unclear what action to take:**
+"Let's work backwards:
+- Who has the power to act?
+- What levers can they pull?
+- What's a realistic timeline?
+Then frame insights as actionable recommendations."
+
+**Low confidence in findings:**
+"Be transparent about uncertainty:
+- State what we know vs. suspect
+- Provide confidence levels
+- Recommend validation
+- Avoid overconfident claims"
 
 ## Advanced Options
 
-Once basic analysis is complete, I can offer:
+**Insight Scoring Model**: Weight insights by impact × confidence × actionability
 
-- **Deeper investigation** - Drill into specific findings
-- **Alternative approaches** - Different analytical lenses
-- **Sensitivity analysis** - Test key assumptions
-- **Comparative analysis** - Benchmark against alternatives
-- **Visualization options** - Different ways to present findings
+**Insight Templates**: Pre-built frameworks for common analysis types
 
-Just ask if you'd like to explore any of these directions!
+**Automated Insights**: Scan for statistical significance, anomalies, patterns
 
-## Integration with Other Skills
+**Insight Tracking**: Monitor which insights led to action and outcomes
 
-This skill works well in combination with:
-- [Related skill 1] - for [complementary analysis]
-- [Related skill 2] - for [next step in workflow]
-- [Related skill 3] - for [alternative perspective]
-
-Let me know if you'd like to chain multiple analyses together.
+**Competitive Insights**: Compare to industry benchmarks, competitors
