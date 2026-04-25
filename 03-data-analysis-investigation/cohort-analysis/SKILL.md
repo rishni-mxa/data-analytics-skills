@@ -1,70 +1,32 @@
 ---
 name: cohort-analysis
-description: Time-based cohort analysis with retention and behavior tracking. Use when analyzing user retention over time, comparing cohort performance, identifying lifecycle patterns, or measuring feature adoption by cohort.
+description: Time-based cohort analysis with retention and behaviour tracking. Activate when you need to measure how groups of users/customers behave over time — retention rates, revenue by cohort, or feature adoption curves.
 ---
 
-# Cohort Analysis
+# When to use
+- A stakeholder asks "are we retaining users better than last quarter?"
+- You need to measure N-day, weekly, or monthly retention for a product or feature
+- You want to compare how different acquisition cohorts (by channel, plan, or signup date) perform over their lifetime
+- You're investigating churn and need to identify at which period users typically leave
 
-## Quick Start
+# Process
+1. **Define the cohort and activity** — clarify: cohort grouping (signup month, first purchase date, etc.) and retention event (login, purchase, feature use). Document in the report header.
+2. **Pull or build the data** — if starting from a database, use `scripts/cohort_query.sql` as the starting point. Adapt the `cohort_date` and `activity_date` columns to your schema.
+3. **Build the cohort table** — run `scripts/cohort_builder.py` to produce a cohort × period membership table from event data. Output is a CSV with `user_id`, `cohort_period`, `activity_period`.
+4. **Compute the retention matrix** — run `scripts/retention_matrix.py` on the cohort table to generate the period-over-period retention rates. Output is an N×M matrix (cohort × period).
+5. **Visualise** — run `scripts/cohort_visualizer.py` to render a heatmap of the retention matrix and a time-series of retention curves per cohort.
+6. **Interpret findings** — consult `references/retention_metrics_glossary.md` for metric definitions and `references/cohort_definition_patterns.md` for pattern recognition.
+7. **Write the report** — fill `assets/cohort_report_template.md`. For a visual deliverable, fill in the `assets/retention_matrix.html` heatmap template.
 
-Analyze how groups of users/customers (cohorts) behave over time, typically measuring retention, revenue, or engagement patterns.
+# Inputs the skill needs
+- Required: event data with `user_id`, `cohort_date` (e.g. `signup_date`), `activity_date`
+- Required: cohort grouping granularity (daily / weekly / monthly)
+- Required: retention event definition — what counts as "active" or "retained"?
+- Optional: minimum cohort size (recommend ≥ 100 users; smaller cohorts have noisy rates)
+- Optional: number of periods to track (e.g. 12 months)
+- Optional: cohort attributes to segment by (acquisition channel, plan tier, geography)
 
-## Context Requirements
-
-1. **Dataset**: User/customer event data
-2. **Cohort Definition**: How to group users (by signup month, acquisition channel, etc.)
-3. **Retention Metric**: What counts as "retained" (login, purchase, usage, etc.)
-4. **Time Periods**: Analysis granularity (daily, weekly, monthly)
-
-## Context Gathering
-
-### Initial Questions:
-"Let's set up cohort analysis. I need:
-
-1. **What are we analyzing?**
-   - User retention (returning users)
-   - Revenue retention (recurring purchases)
-   - Feature adoption (using specific features)
-   - Other behavior
-
-2. **How should we define cohorts?**
-   - By signup date (most common)
-   - By acquisition channel
-   - By first purchase date
-   - By product/plan tier
-   - Other dimension
-
-3. **What counts as 'active' or 'retained'?**
-   Examples:
-   - Logged in at least once
-   - Made a purchase
-   - Used feature X
-   - Spent >10 minutes
-   
-4. **What time periods?**
-   - Daily cohorts (for apps with daily usage)
-   - Weekly cohorts
-   - Monthly cohorts (most common for SaaS)
-   - Quarterly cohorts"
-
-### For Dataset:
-"I need data with:
-- **User ID** (to track individuals)
-- **Cohort date** (e.g., signup_date)
-- **Activity dates** (e.g., login_date, purchase_date)
-- **Cohort attributes** (optional: channel, plan, etc.)
-
-Can you provide:
-- File upload (CSV/Excel), OR
-- Database query to fetch this, OR
-- Description of tables and I'll write the query?"
-
-### Validation Questions:
-"Before I proceed:
-- What minimum cohort size should we analyze? (I recommend >100 users)
-- How many periods should we track? (e.g., 12 months, 8 weeks)
-- Any cohorts to exclude? (e.g., test users, employees)"
-
-## Workflow
-
-### 1. Data Preparation
+# Output
+- `assets/cohort_report_template.md` (filled) — narrative interpretation and retention figures
+- `assets/retention_matrix.html` (filled) — colour-coded retention heatmap
+- `scripts/retention_matrix.py` output CSV — raw retention rates for downstream use

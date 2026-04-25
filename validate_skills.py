@@ -14,12 +14,10 @@ from pathlib import Path
 # Use the directory containing this script as the base path
 BASE_PATH = Path(__file__).resolve().parent
 REQUIRED_SECTIONS = [
-    "Quick Start",
-    "Context Requirements",
-    "Context Gathering",
-    "Workflow",
-    "Context Validation",
-    "Output Template",
+    "When to use",
+    "Process",
+    "Inputs the skill needs",
+    "Output",
 ]
 
 
@@ -59,18 +57,10 @@ def validate_sections(content):
 def validate_skill(skill_path):
     """Validate a single skill"""
     skill_md = skill_path / "SKILL.md"
-    
-    # Detailed skills with enhanced structure (skip section validation)
-    DETAILED_SKILLS = [
-        "programmatic-eda",
-        "query-validation",
-        "semantic-model-builder",
-        "cohort-analysis"
-    ]
-    
+
     if not skill_md.exists():
         return False, "SKILL.md not found"
-    
+
     # Read content with robust decoding across platforms
     try:
         content = skill_md.read_text(encoding="utf-8")
@@ -82,21 +72,17 @@ def validate_skill(skill_path):
                 content = skill_md.read_text(encoding="latin-1", errors="ignore")
             except Exception as e:
                 return False, f"Error reading file: {e}"
-    
+
     # Check frontmatter
     valid, msg = validate_frontmatter(content)
     if not valid:
         return False, f"Frontmatter: {msg}"
-    
-    # Check sections (skip for detailed skills)
-    if skill_path.name not in DETAILED_SKILLS:
-        valid, msg = validate_sections(content)
-        if not valid:
-            return False, f"Sections: {msg}"
-    else:
-        # Just note it's a detailed skill
-        return True, "Valid (Detailed)"
-    
+
+    # Check sections
+    valid, msg = validate_sections(content)
+    if not valid:
+        return False, f"Sections: {msg}"
+
     return True, "Valid"
 
 

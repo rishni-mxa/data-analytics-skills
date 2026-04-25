@@ -1,45 +1,32 @@
 ---
 name: programmatic-eda
-description: Systematic exploratory data analysis following best practices. Use when analyzing any dataset to understand structure, identify data quality issues (duplicates, missing values, inconsistencies, outliers), examine distributions, detect correlations, and generate visualizations. Provides comprehensive data profiling with sanity checks before analysis.
+description: Systematic exploratory data analysis. Activate when a dataset needs profiling — structure check, nulls, outliers, distributions, correlations — before deeper analysis begins.
 ---
 
-# Programmatic EDA
+# When to use
+- You receive a new dataset and need to understand its shape and quality before analysis
+- An analysis produces surprising numbers and you want to verify the underlying data first
+- A stakeholder asks "is this data reliable?" or "what's in this table?"
+- You're about to run a model or statistical test and need data-quality assurance
 
-## Quick Start
+# Process
+1. **Load and overview** — run `scripts/data_overview.py` to get row count, dtypes, memory usage, and a sample. Confirm grain (what one row represents).
+2. **Null profile** — run `scripts/null_profiler.py`; compare output against thresholds in `references/quality_thresholds.md` and flag columns above limits.
+3. **Outlier detection** — run `scripts/outlier_detector.py` (IQR + z-score) on numeric columns; document flagged values and decide: real signal or data error?
+4. **Distribution summary** — run `scripts/distribution_summary.py` for descriptive stats and univariate histograms on each numeric column.
+5. **Correlation exploration** — run `scripts/correlation_explorer.py`; flag pairs with |r| > 0.8 as potential multicollinearity or redundancy.
+6. **EDA checklist sign-off** — work through `references/eda_checklist.md` and confirm each item before declaring the dataset profiled.
+7. **Write findings** — fill `assets/eda_report_template.md` with full profiling output; distil top issues into `assets/findings_summary.md`.
 
-Execute systematic data quality checks, distribution analysis, and correlation detection on any dataset with automated sanity checks.
+For pattern recipes (e.g. polars vs pandas equivalents, chunked reads for large files), see `references/pandas_polars_recipes.md`.
 
-## Context Requirements
+# Inputs the skill needs
+- Required: dataset path (CSV / Parquet / Excel) or a DataFrame already in scope
+- Required: business context — what does one row represent?
+- Optional: quality threshold overrides (defaults in `references/quality_thresholds.md`)
+- Optional: columns to skip (PII, binary blobs, high-cardinality IDs)
 
-Before starting EDA, Claude needs:
-
-1. **Dataset Access**: The data file or database connection
-2. **Business Context**: What this data represents and what decisions it informs
-3. **Quality Thresholds** (optional): What % missing/outliers are acceptable
-
-## Context Gathering
-
-### If dataset not yet loaded:
-"Please provide your dataset. I can work with:
-- CSV/Excel files (upload or provide path)
-- Database connection details
-- Pandas DataFrame (if already loaded in notebook)"
-
-### If business context missing:
-"To provide relevant insights, I need to understand:
-1. What does this dataset represent? (customers, transactions, events, etc.)
-2. What business question are you trying to answer?
-3. What time period does this cover?
-4. Are there any known data quality issues I should be aware of?"
-
-### For quality thresholds (if not provided, use defaults):
-"I'll use standard thresholds unless you specify otherwise:
-- Missing values: Flag if >5% (warn if >30%)
-- Outliers: Flag using IQR method (1.5 × IQR)
-- Duplicates: Flag if >1%
-
-Do these work for your use case, or should I adjust?"
-
-## Workflow
-
-### 1. Data Loading & Overview
+# Output
+- `assets/eda_report_template.md` (filled) — full profiling report with per-column stats
+- `assets/findings_summary.md` (filled) — top 3–5 quality issues and recommended next steps
+- Console output / plots from scripts for interactive inspection
