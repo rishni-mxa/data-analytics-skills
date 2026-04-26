@@ -240,7 +240,7 @@ Claude: [provides summary first, waits for direction]
 ## 📚 Next Steps
 
 ### Explore All Skills
-Browse the [README](README.md) to see all 25 skills across 6 categories.
+Browse the [README](README.md) to see all 31 skills across 6 categories, including the visual skill map.
 
 ---
 

@@ -27,6 +27,9 @@ wheels/
 .ipynb_checkpoints
 *.ipynb
 
+# Claude Code
+.claude/
+
 # IDE
 .vscode/
 .idea/

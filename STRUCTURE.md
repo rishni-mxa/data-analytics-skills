@@ -1,129 +1,109 @@
 # Repository Structure
 
+## Root Files
+
 ```
 data-analytics-skills/
-│
-├── README.md                    # Main repository documentation
-├── QUICKSTART.md               # 5-minute getting started guide
-├── CONTRIBUTING.md             # Guide for contributors
-├── LICENSE                     # MIT License
-├── .gitignore                  # Git ignore rules
-│
-├── 01-data-quality-validation/
-│   ├── programmatic-eda/
-│   │   └── SKILL.md           # ⭐ Detailed implementation
-│   ├── data-quality-audit/
-│   │   └── SKILL.md
-│   ├── query-validation/
-│   │   └── SKILL.md           # ⭐ Detailed implementation
-│   ├── schema-mapper/
-│   │   └── SKILL.md
-│   └── metric-reconciliation/
-│       └── SKILL.md
-│
-├── 02-documentation-knowledge/
-│   ├── semantic-model-builder/
-│   │   └── SKILL.md           # ⭐ Detailed implementation
-│   ├── analysis-documentation/
-│   │   └── SKILL.md
-│   ├── data-catalog-entry/
-│   │   └── SKILL.md
-│   ├── sql-to-business-logic/
-│   │   └── SKILL.md
-│   └── analysis-assumptions-log/
-│       └── SKILL.md
-│
-├── 03-data-analysis-investigation/
-│   ├── cohort-analysis/
-│   │   └── SKILL.md           # ⭐ Detailed implementation
-│   ├── segmentation-analysis/
-│   │   └── SKILL.md
-│   ├── funnel-analysis/
-│   │   └── SKILL.md
-│   ├── time-series-analysis/
-│   │   └── SKILL.md
-│   ├── root-cause-investigation/
-│   │   └── SKILL.md
-│   ├── ab-test-analysis/
-│   │   └── SKILL.md
-│   └── business-metrics-calculator/
-│       └── SKILL.md
-│
-├── 04-data-storytelling-visualization/
-│   ├── insight-synthesis/
-│   │   └── SKILL.md
-│   ├── visualization-builder/
-│   │   └── SKILL.md
-│   ├── executive-summary-generator/
-│   │   └── SKILL.md
-│   ├── dashboard-specification/
-│   │   └── SKILL.md
-│   └── data-narrative-builder/
-│       └── SKILL.md
-│
-├── 05-stakeholder-communication/
-│   ├── technical-to-business-translator/
-│   │   └── SKILL.md
-│   ├── stakeholder-requirements-gathering/
-│   │   └── SKILL.md
-│   ├── analysis-qa-checklist/
-│   │   └── SKILL.md
-│   ├── methodology-explainer/
-│   │   └── SKILL.md
-│   └── impact-quantification/
-│       └── SKILL.md
-│
-└── 06-workflow-optimization/
-    ├── analysis-planning/
-    │   └── SKILL.md
-    ├── context-packager/
-    │   └── SKILL.md
-    ├── peer-review-template/
-    │   └── SKILL.md
-    └── analysis-retrospective/
-        └── SKILL.md
+├── README.md               # Main documentation with embedded skill map
+├── QUICKSTART.md           # 5-minute getting started guide
+├── STRUCTURE.md            # This file
+├── skill-map.svg           # Visual skill map (rendered inline in README)
+├── validate_skills.py      # Skill structure validation script
+└── .gitignore
 ```
+
+## Skill Structure Pattern
+
+Every skill lives inside its category folder. Most skills follow this full layout:
+
+```
+<category>/<skill-name>/
+├── SKILL.md                # Skill definition, workflow, inputs, outputs (required)
+├── scripts/                # Reusable Python / SQL scripts
+├── references/             # Detailed guides and reference documentation
+└── assets/                 # Output templates (Markdown, HTML, YAML)
+```
+
+`SKILL.md` is the only required file. `scripts/`, `references/`, and `assets/` are present in most skills and can be extended with company-specific content.
+
+## Categories and Skills
+
+### 01-data-quality-validation/ — 5 skills
+| Skill | scripts | references | assets |
+|-------|:-------:|:----------:|:------:|
+| programmatic-eda | ✓ | ✓ | ✓ |
+| data-quality-audit | ✓ | ✓ | ✓ |
+| query-validation | ✓ | ✓ | ✓ |
+| schema-mapper | — | — | — |
+| metric-reconciliation | — | — | — |
+
+### 02-documentation-knowledge/ — 5 skills
+| Skill | scripts | references | assets |
+|-------|:-------:|:----------:|:------:|
+| semantic-model-builder | ✓ | ✓ | ✓ |
+| analysis-documentation | — | ✓ | ✓ |
+| data-catalog-entry | ✓ | ✓ | ✓ |
+| sql-to-business-logic | ✓ | ✓ | ✓ |
+| analysis-assumptions-log | ✓ | ✓ | ✓ |
+
+### 03-data-analysis-investigation/ — 7 skills
+| Skill | scripts | references | assets |
+|-------|:-------:|:----------:|:------:|
+| cohort-analysis | ✓ | ✓ | ✓ |
+| segmentation-analysis | ✓ | ✓ | ✓ |
+| funnel-analysis | ✓ | ✓ | ✓ |
+| time-series-analysis | ✓ | ✓ | ✓ |
+| root-cause-investigation | ✓ | ✓ | ✓ |
+| ab-test-analysis | ✓ | ✓ | ✓ |
+| business-metrics-calculator | ✓ | ✓ | ✓ |
+
+### 04-data-storytelling-visualization/ — 5 skills
+| Skill | scripts | references | assets |
+|-------|:-------:|:----------:|:------:|
+| insight-synthesis | — | ✓ | ✓ |
+| visualization-builder | ✓ | ✓ | ✓ |
+| executive-summary-generator | — | ✓ | ✓ |
+| dashboard-specification | — | ✓ | ✓ |
+| data-narrative-builder | — | ✓ | ✓ |
+
+### 05-stakeholder-communication/ — 5 skills
+| Skill | scripts | references | assets |
+|-------|:-------:|:----------:|:------:|
+| technical-to-business-translator | ✓ | ✓ | ✓ |
+| stakeholder-requirements-gathering | — | ✓ | ✓ |
+| analysis-qa-checklist | ✓ | ✓ | ✓ |
+| methodology-explainer | — | ✓ | ✓ |
+| impact-quantification | ✓ | ✓ | ✓ |
+
+### 06-workflow-optimization/ — 4 skills
+| Skill | scripts | references | assets |
+|-------|:-------:|:----------:|:------:|
+| analysis-planning | — | ✓ | ✓ |
+| context-packager | ✓ | ✓ | ✓ |
+| peer-review-template | — | ✓ | ✓ |
+| analysis-retrospective | — | ✓ | ✓ |
 
 ## Summary Statistics
 
-- **Total Skills**: 25
-- **Categories**: 6
-- **Detailed Skills**: 4 (marked with ⭐)
-- **Documentation Files**: 4 (README, QUICKSTART, CONTRIBUTING, LICENSE)
+| | Count |
+|-|------:|
+| Total skills | 31 |
+| Categories | 6 |
+| Skills with scripts | 19 |
+| Skills with references | 29 |
+| Skills with assets | 29 |
 
-## Category Breakdown
+## Adding Company-Specific Content
 
-| Category | Skills | Purpose |
-|----------|--------|---------|
-| Data Quality & Validation | 5 | Ensure data reliability and correctness |
-| Documentation & Knowledge | 5 | Build reusable context and knowledge |
-| Data Analysis & Investigation | 7 | Discover insights from data |
-| Data Storytelling & Visualization | 5 | Transform analysis into narratives |
-| Stakeholder Communication | 5 | Bridge technical and business teams |
-| Workflow Optimization | 4 | Streamline analytical processes |
-
-## File Sizes
-
-All SKILL.md files range from:
-- **Standard skills**: ~2-3 KB (streamlined, on-demand format)
-- **Detailed skills**: ~5-15 KB (comprehensive workflows with examples)
-
-## Next Steps for Enhancement
-
-Optional additions for future versions:
+Drop files into any skill's `references/` folder to give Claude persistent context without modifying the core `SKILL.md`:
 
 ```
 skill-name/
-├── SKILL.md                    # Core skill
-├── references/                 # Optional: detailed docs
-│   ├── examples.md
-│   ├── edge-cases.md
-│   └── advanced-techniques.md
-├── scripts/                    # Optional: reusable code
-│   ├── helper_functions.py
-│   └── templates.sql
-└── assets/                     # Optional: templates
-    └── output_template.xlsx
+├── SKILL.md
+└── references/
+    ├── company-schema.md       ← table/column definitions
+    ├── metric-definitions.md   ← standard formulas
+    └── business-rules.md       ← thresholds, edge cases
 ```
 
-These can be added as skills mature and usage patterns emerge.
+Claude will pull these automatically when the skill runs.
