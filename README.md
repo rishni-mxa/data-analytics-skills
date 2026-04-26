@@ -1,254 +1,201 @@
 # Data Analytics Skills for Claude
 
-A comprehensive collection of 31 portable, reusable skills designed to enhance Claude's capabilities for data analytics workflows. These skills follow an **on-demand context pattern** - they request necessary information from users dynamically rather than requiring pre-configured company-specific context.
+> **31 portable, AI-powered skills** that turn Claude into a hands-on analytics partner — no setup required, works for any company or industry.
 
-## 🎯 Philosophy
+## What's in this repo?
 
-Traditional AI skills often require extensive upfront configuration with company-specific schemas, metrics, and business rules. This creates a barrier to adoption and limits portability.
+A structured library of **skills** (reusable instruction sets) that Claude activates on demand to help with every stage of the analyst workflow: from data quality checks and deep-dive analysis, through documentation and dashboards, all the way to stakeholder communication.
 
-**These skills are different:**
-- ✅ **Portable** - Work for any company, any industry
-- ✅ **Educational** - Teach users what context matters through intelligent prompts
-- ✅ **Flexible** - Adapt to whatever context users can provide
-- ✅ **Progressive** - Start minimal, gather more detail as needed
-- ✅ **Graceful** - Handle partial context elegantly
+### Interactive Skill Map
+
+Explore all 31 skills organized by category:
+
+[![Skill Map](https://img.shields.io/badge/View%20Interactive%20Diagram-Excalidraw-6366f1?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0zIDNoMTh2MThIM3oiLz48L3N2Zz4=)](https://excalidraw.com/#json=wWcmLjEVHAYl4I4fynPSm,d8UC4Lexp2iSy5OPfIyJPQ)
+
+```
+┌──────────────────────┬──────────────────────┬──────────────────────┐
+│  01 Data Quality     │  02 Documentation    │  03 Data Analysis    │
+│  & Validation        │  & Knowledge         │  & Investigation     │
+│  ─────────────────   │  ─────────────────   │  ─────────────────   │
+│  programmatic-eda    │  semantic-model-     │  cohort-analysis     │
+│  data-quality-audit  │    builder           │  segmentation-       │
+│  query-validation    │  analysis-           │    analysis          │
+│  schema-mapper       │    documentation     │  funnel-analysis     │
+│  metric-             │  data-catalog-entry  │  time-series-        │
+│    reconciliation    │  sql-to-business-    │    analysis          │
+│                      │    logic             │  root-cause-         │
+│                      │  analysis-           │    investigation     │
+│                      │    assumptions-log   │  ab-test-analysis    │
+│                      │                      │  business-metrics-   │
+│                      │                      │    calculator        │
+├──────────────────────┼──────────────────────┼──────────────────────┤
+│  04 Storytelling     │  05 Stakeholder      │  06 Workflow         │
+│  & Visualization     │  Communication       │  Optimization        │
+│  ─────────────────   │  ─────────────────   │  ─────────────────   │
+│  insight-synthesis   │  technical-to-       │  analysis-planning   │
+│  visualization-      │    business-         │  context-packager    │
+│    builder           │    translator        │  peer-review-        │
+│  executive-summary-  │  stakeholder-        │    template          │
+│    generator         │    requirements-     │  analysis-           │
+│  dashboard-          │    gathering         │    retrospective     │
+│    specification     │  analysis-qa-        │                      │
+│  data-narrative-     │    checklist         │                      │
+│    builder           │  methodology-        │                      │
+│                      │    explainer         │                      │
+│                      │  impact-             │                      │
+│                      │    quantification    │                      │
+└──────────────────────┴──────────────────────┴──────────────────────┘
+```
+
+## Why these skills are different
+
+Traditional AI assistants require extensive upfront configuration — schemas, metric definitions, business rules — before they're useful. **These skills work on-demand:**
+
+| Traditional approach | These skills |
+|---------------------|--------------|
+| Needs prep before use | Zero setup required |
+| Breaks when business rules change | Adapts naturally |
+| Company-specific, hard to share | Portable across any org |
+| Silent on assumptions | Teaches you what context matters |
+
+Each skill asks targeted questions to gather exactly what it needs, then executes a complete, structured workflow.
 
 ## 📚 Skill Categories
 
-### 01. Data Quality & Validation (5 skills)
-Foundation skills for ensuring data reliability and correctness.
+### 01. Data Quality & Validation
+*Foundation — start here whenever you're working with new data*
 
-- **[programmatic-eda](01-data-quality-validation/programmatic-eda/)** - Systematic exploratory data analysis with automated sanity checks
-- **[data-quality-audit](01-data-quality-validation/data-quality-audit/)** - Comprehensive data quality assessment against business rules
-- **[query-validation](01-data-quality-validation/query-validation/)** - SQL query review for correctness and performance
-- **[schema-mapper](01-data-quality-validation/schema-mapper/)** - Database schema understanding and relationship mapping
-- **[metric-reconciliation](01-data-quality-validation/metric-reconciliation/)** - Cross-source metric validation and discrepancy investigation
+| Skill | What it does |
+|-------|-------------|
+| **[programmatic-eda](01-data-quality-validation/programmatic-eda/)** | Systematic exploratory data analysis with automated sanity checks |
+| **[data-quality-audit](01-data-quality-validation/data-quality-audit/)** | Comprehensive quality assessment against business rules and schema |
+| **[query-validation](01-data-quality-validation/query-validation/)** | SQL review for correctness, performance, and edge cases |
+| **[schema-mapper](01-data-quality-validation/schema-mapper/)** | Understand database relationships and table structures |
+| **[metric-reconciliation](01-data-quality-validation/metric-reconciliation/)** | Investigate discrepancies between metric sources |
 
-### 02. Documentation & Knowledge (5 skills)
-Build reusable context and institutional knowledge.
+### 02. Documentation & Knowledge
+*Build reusable context so you never explain the same thing twice*
 
-- **[semantic-model-builder](02-documentation-knowledge/semantic-model-builder/)** - Create comprehensive semantic layer documentation
-- **[analysis-documentation](02-documentation-knowledge/analysis-documentation/)** - Structured analysis documentation with reproducible findings
-- **[data-catalog-entry](02-documentation-knowledge/data-catalog-entry/)** - Standardized metadata creation for data assets
-- **[sql-to-business-logic](02-documentation-knowledge/sql-to-business-logic/)** - Translate SQL queries into plain business language
-- **[analysis-assumptions-log](02-documentation-knowledge/analysis-assumptions-log/)** - Systematic tracking of analysis assumptions and decisions
+| Skill | What it does |
+|-------|-------------|
+| **[semantic-model-builder](02-documentation-knowledge/semantic-model-builder/)** | Create a shared semantic layer for key metrics and dimensions |
+| **[analysis-documentation](02-documentation-knowledge/analysis-documentation/)** | Document findings with reproducible methodology |
+| **[data-catalog-entry](02-documentation-knowledge/data-catalog-entry/)** | Standardized metadata and descriptions for data assets |
+| **[sql-to-business-logic](02-documentation-knowledge/sql-to-business-logic/)** | Translate complex SQL into plain business language |
+| **[analysis-assumptions-log](02-documentation-knowledge/analysis-assumptions-log/)** | Track every assumption and decision in an analysis |
 
-### 03. Data Analysis & Investigation (7 skills)
-Core analytical workflows for discovering insights.
+### 03. Data Analysis & Investigation
+*Core workflows for the analytical heavy lifting*
 
-- **[cohort-analysis](03-data-analysis-investigation/cohort-analysis/)** - Time-based cohort analysis with retention tracking
-- **[segmentation-analysis](03-data-analysis-investigation/segmentation-analysis/)** - Customer/user segmentation with actionable insights
-- **[funnel-analysis](03-data-analysis-investigation/funnel-analysis/)** - Conversion funnel analysis with drop-off investigation
-- **[time-series-analysis](03-data-analysis-investigation/time-series-analysis/)** - Temporal pattern detection and forecasting
-- **[root-cause-investigation](03-data-analysis-investigation/root-cause-investigation/)** - Systematic investigation of metric changes
-- **[ab-test-analysis](03-data-analysis-investigation/ab-test-analysis/)** - Rigorous A/B test statistical analysis
-- **[business-metrics-calculator](03-data-analysis-investigation/business-metrics-calculator/)** - Standard business metric calculation with benchmarks
+| Skill | What it does |
+|-------|-------------|
+| **[cohort-analysis](03-data-analysis-investigation/cohort-analysis/)** | Time-based cohort tracking with retention curves |
+| **[segmentation-analysis](03-data-analysis-investigation/segmentation-analysis/)** | Customer/user segmentation with actionable profiles |
+| **[funnel-analysis](03-data-analysis-investigation/funnel-analysis/)** | Conversion funnel with drop-off root-cause |
+| **[time-series-analysis](03-data-analysis-investigation/time-series-analysis/)** | Trend detection, seasonality, and forecasting |
+| **[root-cause-investigation](03-data-analysis-investigation/root-cause-investigation/)** | Structured diagnosis of unexpected metric changes |
+| **[ab-test-analysis](03-data-analysis-investigation/ab-test-analysis/)** | Rigorous experiment analysis with significance testing |
+| **[business-metrics-calculator](03-data-analysis-investigation/business-metrics-calculator/)** | Standard business metric calculation with benchmarks |
 
-### 04. Data Storytelling & Visualization (5 skills)
-Transform analysis into compelling narratives.
+### 04. Data Storytelling & Visualization
+*Turn raw findings into insights that drive decisions*
 
-- **[insight-synthesis](04-data-storytelling-visualization/insight-synthesis/)** - Transform analysis outputs into structured business insights
-- **[visualization-builder](04-data-storytelling-visualization/visualization-builder/)** - Chart type selection and visual design guidance
-- **[executive-summary-generator](04-data-storytelling-visualization/executive-summary-generator/)** - Concise executive-level analysis summaries
-- **[dashboard-specification](04-data-storytelling-visualization/dashboard-specification/)** - Comprehensive dashboard requirements documentation
-- **[data-narrative-builder](04-data-storytelling-visualization/data-narrative-builder/)** - Structure analytical findings into compelling narratives
+| Skill | What it does |
+|-------|-------------|
+| **[insight-synthesis](04-data-storytelling-visualization/insight-synthesis/)** | Structure analysis outputs into clear business insights |
+| **[visualization-builder](04-data-storytelling-visualization/visualization-builder/)** | Chart type selection, design guidance, and spec generation |
+| **[executive-summary-generator](04-data-storytelling-visualization/executive-summary-generator/)** | Concise executive-ready summaries of complex analysis |
+| **[dashboard-specification](04-data-storytelling-visualization/dashboard-specification/)** | Full dashboard requirements with metrics and layout |
+| **[data-narrative-builder](04-data-storytelling-visualization/data-narrative-builder/)** | Craft a compelling story arc from analytical findings |
 
-### 05. Stakeholder Communication (5 skills)
-Bridge the gap between technical analysis and business stakeholders.
+### 05. Stakeholder Communication
+*Bridge the gap between technical depth and business understanding*
 
-- **[technical-to-business-translator](05-stakeholder-communication/technical-to-business-translator/)** - Translate technical analysis into business language
-- **[stakeholder-requirements-gathering](05-stakeholder-communication/stakeholder-requirements-gathering/)** - Structured requirements elicitation for analysis requests
-- **[analysis-qa-checklist](05-stakeholder-communication/analysis-qa-checklist/)** - Pre-delivery quality assurance for analysis work
-- **[methodology-explainer](05-stakeholder-communication/methodology-explainer/)** - Explain analysis methodology to diverse audiences
-- **[impact-quantification](05-stakeholder-communication/impact-quantification/)** - Estimate and communicate business impact of insights
+| Skill | What it does |
+|-------|-------------|
+| **[technical-to-business-translator](05-stakeholder-communication/technical-to-business-translator/)** | Reframe technical findings for a business audience |
+| **[stakeholder-requirements-gathering](05-stakeholder-communication/stakeholder-requirements-gathering/)** | Structured elicitation to clarify what stakeholders actually need |
+| **[analysis-qa-checklist](05-stakeholder-communication/analysis-qa-checklist/)** | Pre-delivery quality gate before sharing results |
+| **[methodology-explainer](05-stakeholder-communication/methodology-explainer/)** | Explain analysis approach to any audience level |
+| **[impact-quantification](05-stakeholder-communication/impact-quantification/)** | Estimate and frame the business impact of findings |
 
-### 06. Workflow Optimization (4 skills)
-Streamline and improve analytical processes.
+### 06. Workflow Optimization
+*Work smarter across every project*
 
-- **[analysis-planning](06-workflow-optimization/analysis-planning/)** - Structure analysis approach before starting work
-- **[context-packager](06-workflow-optimization/context-packager/)** - Efficiently package context for AI-assisted analysis
-- **[peer-review-template](06-workflow-optimization/peer-review-template/)** - Structured peer review for analytical work
-- **[analysis-retrospective](06-workflow-optimization/analysis-retrospective/)** - Post-analysis learning and process improvement
+| Skill | What it does |
+|-------|-------------|
+| **[analysis-planning](06-workflow-optimization/analysis-planning/)** | Structure the approach before diving in |
+| **[context-packager](06-workflow-optimization/context-packager/)** | Package context efficiently for AI-assisted analysis |
+| **[peer-review-template](06-workflow-optimization/peer-review-template/)** | Structured peer review checklist for analytical work |
+| **[analysis-retrospective](06-workflow-optimization/analysis-retrospective/)** | Post-analysis learning and process improvement |
 
 ## 🚀 Quick Start
 
-### For Individual Use
+**Pick a skill for your current task and describe what you need:**
 
-1. **Choose a skill** based on your current task
-2. **Trigger the skill** in your conversation with Claude by describing what you need
-3. **Provide context** when Claude asks for it (data, business logic, objectives)
-4. **Iterate** as Claude presents findings and asks clarifying questions
-
-Example:
 ```
-You: "I need to do exploratory data analysis on this customer dataset"
-Claude: [triggers programmatic-eda skill, requests context]
-You: [provides dataset and business context]
-Claude: [executes systematic EDA with checkpoints]
+You:    "I need to understand why our activation rate dropped 12% last week"
+Claude: [activates root-cause-investigation, asks for metric data and context]
+You:    [provides data and business context]
+Claude: [runs structured investigation with hypothesis testing]
 ```
 
-### For Team Deployment
+### Which skill to start with?
 
-1. **Select starter skills** - Recommend starting with:
-   - `programmatic-eda` (everyone needs this)
-   - `semantic-model-builder` (reduces repeated context)
-   - `query-validation` (prevents errors)
-   - Your domain-specific analysis skill (cohort/funnel/metrics)
+| You need to... | Start here |
+|---------------|-----------|
+| Explore an unfamiliar dataset | `programmatic-eda` → `data-quality-audit` |
+| Write or review SQL | `query-validation` + `schema-mapper` |
+| Understand a metric drop/spike | `root-cause-investigation` |
+| Analyze experiment results | `ab-test-analysis` |
+| Build a dashboard | `dashboard-specification` + `visualization-builder` |
+| Present to leadership | `executive-summary-generator` + `insight-synthesis` |
+| Document your methodology | `analysis-documentation` + `analysis-assumptions-log` |
+| Start a complex analysis | `analysis-planning` first, always |
 
-2. **Customize context prompts** (optional) - Add company-specific:
-   - Default schemas
-   - Standard metrics
-   - Common business rules
-   - Preferred templates
+## 📖 How skills work
 
-3. **Build team context library** - Create reference documents:
-   - Data dictionary
-   - Metric definitions
-   - Schema documentation
-   - Style guides
+Each skill follows the same **on-demand context pattern**:
 
-4. **Train the team** - Workshop format:
-   - Session 1: Build one skill together (2 hours)
-   - Session 2: Practice with real data (2 hours)
-   - Session 3: Customize and iterate (1.5 hours)
+1. **Request minimum viable context** — Claude asks only what's essential to start
+2. **Execute the workflow** — structured, step-by-step analytical process
+3. **Surface assumptions** — anything uncertain is flagged, not silently assumed
+4. **Deliver a consistent output** — templated result you can share or iterate on
 
-## 📖 How These Skills Work
+Skills degrade gracefully: if you can't provide everything, Claude states what it's assuming and proceeds.
 
-### On-Demand Context Pattern
+## 🛠️ Customization
 
-Each skill follows a consistent structure:
+Skills work out-of-the-box. To make them company-specific, add a `references/` folder inside any skill with:
 
-```markdown
-1. Context Requirements - What's needed
-2. Context Gathering - Specific questions to ask
-3. Workflow - Execute using gathered context  
-4. Context Validation - Confirm before proceeding
-5. Output Template - Consistent results
-6. Handling Missing Context - Graceful degradation
-```
-
-### Progressive Disclosure
-
-Skills request **minimum viable context** first, then progressively ask for more:
-
-- **Level 1** - Essential (can't proceed without this)
-- **Level 2** - Recommended (improves analysis quality)
-- **Level 3** - Optional (enables advanced features)
-
-### Smart Defaults
-
-When context isn't provided, skills:
-- Use industry-standard assumptions
-- Clearly state what defaults were applied
-- Allow easy override of assumptions
-- Document limitations from missing context
-
-## 🛠️ Customization Guide
-
-### Making Skills Company-Specific
-
-While skills work out-of-the-box, you can enhance them with company context:
-
-**Option 1: Add to SKILL.md**
-```markdown
-## Company Defaults (Optional)
-
-If user doesn't specify, use these company standards:
-- Quality threshold: <1% missing for core metrics
-- Primary database: Snowflake  
-- Metric definitions: [link to wiki]
-```
-
-**Option 2: Create Reference Files**
 ```
 skill-name/
 ├── SKILL.md
 └── references/
-    ├── company-schema.md
-    ├── metric-definitions.md
-    └── business-rules.md
+    ├── company-schema.md       ← your table/column definitions
+    ├── metric-definitions.md   ← standard metric formulas
+    └── business-rules.md       ← thresholds, edge cases, etc.
 ```
 
-**Option 3: Context Library Approach**
-- Keep skills generic
-- Create separate "context documents" that users reference
-- More maintainable for evolving business logic
+Claude will pull this context automatically when the skill runs.
 
-## 📊 Skill Selection Guide
+## 🎓 Suggested ramp-up
 
-**Choose skills based on your most frequent tasks:**
+**Week 1 — Get comfortable**
+- Run `programmatic-eda` on a familiar dataset
+- Practice providing context when Claude asks
+- Use `analysis-planning` at the start of your next project
 
-| If you frequently... | Start with these skills |
-|---------------------|------------------------|
-| Analyze new datasets | `programmatic-eda`, `data-quality-audit` |
-| Write SQL queries | `query-validation`, `schema-mapper` |
-| Calculate business metrics | `business-metrics-calculator`, `metric-reconciliation` |
-| Analyze user behavior | `cohort-analysis`, `funnel-analysis`, `segmentation-analysis` |
-| Run experiments | `ab-test-analysis`, `root-cause-investigation` |
-| Create dashboards | `dashboard-specification`, `visualization-builder` |
-| Present to executives | `executive-summary-generator`, `insight-synthesis` |
-| Document your work | `analysis-documentation`, `semantic-model-builder` |
+**Week 2-3 — Add your core toolkit**
+- Set up `semantic-model-builder` for your key metrics (saves time forever)
+- Add `query-validation` to your SQL workflow
+- Pick 2 analysis skills that match your domain
 
-## 🎓 Learning Path
-
-### Beginner (Week 1)
-1. Start with `programmatic-eda` on sample data
-2. Practice providing context when prompted
-3. Learn what makes good vs poor context
-
-### Intermediate (Week 2-3)
-4. Add `query-validation` for SQL work
-5. Create `semantic-model-builder` docs for your key metrics
-6. Pick 1-2 analysis skills for your domain
-
-### Advanced (Week 4+)
-7. Build full workflow with 5+ chained skills
-8. Customize skills with company defaults
-9. Create team context library
-10. Develop new skills for specialized needs
-
-## 📐 Architecture Decisions
-
-### Why On-Demand Context?
-
-**Traditional Approach:**
-- Requires extensive prep (schema extraction, metric compilation)
-- Brittle (breaks when business rules change)
-- Company-specific (can't share across teams)
-
-**On-Demand Approach:**
-- Zero prep required
-- Adapts to change naturally
-- Portable across organizations
-- Educational (teaches what matters)
-
-### Why 25 Skills?
-
-This set covers **80% of data analyst workflows**:
-- Data quality: 20% of work
-- Analysis & investigation: 35% of work
-- Documentation: 15% of work
-- Communication: 20% of work
-- Workflow optimization: 10% of work
-
-Teams typically use 5-10 skills regularly, all 25 occasionally.
-
-### Skill Boundaries
-
-Each skill has **clear scope**:
-- Single responsibility (one type of analysis)
-- Composable (works with other skills)
-- Complete workflow (start to finish)
-- Reusable (many applications)
-
-## 🔗 Related Resources
-
-- [Claude Skills Documentation](https://docs.anthropic.com/claude/docs/skills)
-- [Prompt Engineering Guide](https://docs.anthropic.com/claude/docs/prompt-engineering)
-- [Data Analytics Best Practices](./docs/best-practices.md)
+**Week 4+ — Go advanced**
+- Chain 4-5 skills end-to-end on a full project
+- Add company-specific references to the skills you use most
+- Build team context documents for shared onboarding
 
 ---
 
-**Version:** 1.0.0  
-**Last Updated:** January 2025  
-**Maintainer:** Nimrod Fisher
+**Version:** 1.1.0 | **Maintainer:** Nimrod Fisher | **Last Updated:** April 2026
