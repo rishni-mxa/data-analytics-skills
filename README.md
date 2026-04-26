@@ -12,41 +12,6 @@ A structured library of **skills** (reusable instruction sets) that Claude activ
 
 > [Open interactive version on Excalidraw](https://excalidraw.com/#json=wWcmLjEVHAYl4I4fynPSm,d8UC4Lexp2iSy5OPfIyJPQ)
 
-```
-┌──────────────────────┬──────────────────────┬──────────────────────┐
-│  01 Data Quality     │  02 Documentation    │  03 Data Analysis    │
-│  & Validation        │  & Knowledge         │  & Investigation     │
-│  ─────────────────   │  ─────────────────   │  ─────────────────   │
-│  programmatic-eda    │  semantic-model-     │  cohort-analysis     │
-│  data-quality-audit  │    builder           │  segmentation-       │
-│  query-validation    │  analysis-           │    analysis          │
-│  schema-mapper       │    documentation     │  funnel-analysis     │
-│  metric-             │  data-catalog-entry  │  time-series-        │
-│    reconciliation    │  sql-to-business-    │    analysis          │
-│                      │    logic             │  root-cause-         │
-│                      │  analysis-           │    investigation     │
-│                      │    assumptions-log   │  ab-test-analysis    │
-│                      │                      │  business-metrics-   │
-│                      │                      │    calculator        │
-├──────────────────────┼──────────────────────┼──────────────────────┤
-│  04 Storytelling     │  05 Stakeholder      │  06 Workflow         │
-│  & Visualization     │  Communication       │  Optimization        │
-│  ─────────────────   │  ─────────────────   │  ─────────────────   │
-│  insight-synthesis   │  technical-to-       │  analysis-planning   │
-│  visualization-      │    business-         │  context-packager    │
-│    builder           │    translator        │  peer-review-        │
-│  executive-summary-  │  stakeholder-        │    template          │
-│    generator         │    requirements-     │  analysis-           │
-│  dashboard-          │    gathering         │    retrospective     │
-│    specification     │  analysis-qa-        │                      │
-│  data-narrative-     │    checklist         │                      │
-│    builder           │  methodology-        │                      │
-│                      │    explainer         │                      │
-│                      │  impact-             │                      │
-│                      │    quantification    │                      │
-└──────────────────────┴──────────────────────┴──────────────────────┘
-```
-
 ## Why these skills are different
 
 Traditional AI assistants require extensive upfront configuration — schemas, metric definitions, business rules — before they're useful. **These skills work on-demand:**
