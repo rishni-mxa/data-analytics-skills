@@ -6,11 +6,11 @@
 
 A structured library of **skills** (reusable instruction sets) that Claude activates on demand to help with every stage of the analyst workflow: from data quality checks and deep-dive analysis, through documentation and dashboards, all the way to stakeholder communication.
 
-### Interactive Skill Map
+### Skill Map
 
-Explore all 31 skills organized by category:
+![Data Analytics Skill Map](./skill-map.svg)
 
-[![Skill Map](https://img.shields.io/badge/View%20Interactive%20Diagram-Excalidraw-6366f1?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0zIDNoMTh2MThIM3oiLz48L3N2Zz4=)](https://excalidraw.com/#json=wWcmLjEVHAYl4I4fynPSm,d8UC4Lexp2iSy5OPfIyJPQ)
+> [Open interactive version on Excalidraw](https://excalidraw.com/#json=wWcmLjEVHAYl4I4fynPSm,d8UC4Lexp2iSy5OPfIyJPQ)
 
 ```
 ┌──────────────────────┬──────────────────────┬──────────────────────┐
