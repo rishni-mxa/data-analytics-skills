@@ -3,168 +3,29 @@ name: impact-quantification
 description: Estimate and communicate business impact of insights. Use when sizing opportunities discovered in analysis, calculating ROI of recommended actions, or prioritizing initiatives by potential impact.
 ---
 
-# Impact Quantification
+# When to use
 
-## Quick Start
+After an analytical finding surfaces a potential action, change, or opportunity. Use to produce a defensible numeric estimate that stakeholders can act on. Also use when prioritizing a backlog of initiatives — quantified impact is the primary ranking signal.
 
-This skill helps you estimate and communicate business impact of insights.
+# Process
 
-## Context Requirements
+1. **Classify the impact type** — revenue growth, cost reduction, risk reduction, or efficiency gain. Each type has a different formula family (see `references/impact_quantification_framework.md`).
+2. **Gather inputs** — collect baseline metrics, affected population size, expected lift/reduction, time horizon, and confidence level.
+3. **Build the point estimate** — use `scripts/revenue_impact.py` for revenue/growth scenarios or `scripts/cost_savings.py` for cost/efficiency scenarios.
+4. **Add uncertainty bounds** — use `scripts/confidence_interval.py` to produce low/base/high estimates. Never deliver a single number without a range.
+5. **Document assumptions** — fill in `references/assumption_documentation.md` for every input that is estimated rather than directly measured; note the sensitivity of the output to each.
+6. **Package the estimate** — complete `assets/impact_estimate_template.md` with the range, assumptions, confidence, and recommended action; optionally build the full `assets/business_case_template.md` for larger decisions.
 
-Before proceeding, I need:
+# Inputs the skill needs
 
-1. **Insight/recommendation**: Key information needed for this analysis
-2. **Impact categories**: Key information needed for this analysis
-3. **Sizing methodology**: Key information needed for this analysis
-4. **Discount rates**: Key information needed for this analysis
-5. **Impact thresholds**: Key information needed for this analysis
+- Baseline metric value (current state)
+- Affected population or volume
+- Expected change (lift %, absolute, or rate change)
+- Time horizon (monthly / annual)
+- Confidence level in inputs (high / medium / low)
 
-## Context Gathering
+# Output
 
-If any required context is missing from our conversation, I'll ask for it using these prompts:
-
-### For Insight/recommendation:
-"To proceed with impact quantification, I need to understand insight/recommendation.
-
-Please provide:
-- [Specific detail 1 about insight/recommendation]
-- [Specific detail 2 about insight/recommendation]
-- [Optional context that would help]"
-
-
-### For Impact categories:
-"To proceed with impact quantification, I need to understand impact categories.
-
-Please provide:
-- [Specific detail 1 about impact categories]
-- [Specific detail 2 about impact categories]
-- [Optional context that would help]"
-
-
-### For Sizing methodology:
-"To proceed with impact quantification, I need to understand sizing methodology.
-
-Please provide:
-- [Specific detail 1 about sizing methodology]
-- [Specific detail 2 about sizing methodology]
-- [Optional context that would help]"
-
-
-### Handling Partial Context
-
-If you can only provide some of the context:
-- I'll proceed with what's available and note limitations
-- I'll use industry standard defaults where appropriate
-- I'll ask clarifying questions as needed during the analysis
-
-## Workflow
-
-### Step 1: Validate Context
-
-Before starting, I'll confirm:
-- [ ] All required context is available or has reasonable defaults
-- [ ] The scope and objectives are clear
-- [ ] Expected outputs align with your needs
-
-### Step 2: Execute Core Analysis
-
-Following best practices for impact quantification, I'll:
-
-1. **Initial assessment** - Review provided context and data
-2. **Systematic execution** - Follow structured methodology
-3. **Quality checks** - Validate intermediate results
-4. **Progressive disclosure** - Share findings at logical checkpoints
-
-### Step 3: Synthesize Findings
-
-I'll present results in a clear, actionable format:
-- Key findings prioritized by importance
-- Supporting evidence and visualizations
-- Recommendations with implementation guidance
-- Limitations and assumptions documented
-
-### Step 4: Iterate Based on Feedback
-
-After presenting initial findings:
-- Address questions and dive deeper where needed
-- Refine analysis based on your feedback
-- Provide additional context or alternative approaches
-
-## Context Validation
-
-Before executing the full workflow, I verify:
-
-- [ ] Context is sufficient for meaningful analysis
-- [ ] No contradictions in provided information  
-- [ ] Scope is well-defined and achievable
-- [ ] Expected outputs are clear
-
-## Output Template
-
-```
-Impact Quantification Analysis
-Generated: [timestamp]
-
-## Context Summary
-- [Key context item 1]
-- [Key context item 2]
-- [Key context item 3]
-
-## Methodology
-[Brief description of approach taken]
-
-## Key Findings
-1. **Finding 1**: [Observation] - [Implication]
-2. **Finding 2**: [Observation] - [Implication]
-3. **Finding 3**: [Observation] - [Implication]
-
-## Detailed Analysis
-[In-depth analysis with supporting evidence]
-
-## Recommendations
-1. **Recommendation 1**: [Action] - [Expected outcome]
-2. **Recommendation 2**: [Action] - [Expected outcome]
-
-## Limitations & Assumptions
-- [Limitation or assumption 1]
-- [Limitation or assumption 2]
-
-## Next Steps
-1. [Suggested follow-up action 1]
-2. [Suggested follow-up action 2]
-```
-
-## Common Context Gaps & Solutions
-
-**Scenario: User requests impact quantification without providing context**
-→ Response: "I can help with impact quantification! To provide the most relevant analysis, I need [key context items]. Can you share [specific ask]?"
-
-**Scenario: Partial context provided**
-→ Response: "I have [available context]. I'll proceed with [what's possible] and will note where additional context would improve the analysis."
-
-**Scenario: Unclear objectives**  
-→ Response: "To ensure my analysis meets your needs, can you clarify: What decisions will this inform? What format would be most useful?"
-
-**Scenario: Domain-specific terminology**
-→ Response: "I want to make sure I understand your terminology correctly. When you say [term], do you mean [interpretation]?"
-
-## Advanced Options
-
-Once basic analysis is complete, I can offer:
-
-- **Deeper investigation** - Drill into specific findings
-- **Alternative approaches** - Different analytical lenses
-- **Sensitivity analysis** - Test key assumptions
-- **Comparative analysis** - Benchmark against alternatives
-- **Visualization options** - Different ways to present findings
-
-Just ask if you'd like to explore any of these directions!
-
-## Integration with Other Skills
-
-This skill works well in combination with:
-- [Related skill 1] - for [complementary analysis]
-- [Related skill 2] - for [next step in workflow]
-- [Related skill 3] - for [alternative perspective]
-
-Let me know if you'd like to chain multiple analyses together.
+- Impact estimate with low/base/high range
+- Assumption log (source and sensitivity for each input)
+- Completed `impact_estimate_template.md` or `business_case_template.md`
