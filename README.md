@@ -1,20 +1,40 @@
+<div align="center">
+
 # Data Analytics Skills for Claude
 
-> **31 portable, AI-powered skills** that turn Claude into a hands-on analytics partner — no setup required, works for any company or industry.
+**31 portable AI-powered skills that turn Claude into a hands-on analytics partner**
+
+*No setup required · Works for any company or industry*
+
+<br>
+
+[![](https://img.shields.io/badge/31_Skills-4a9eed?style=for-the-badge)](./README.md#-skill-categories)&nbsp;
+[![](https://img.shields.io/badge/6_Categories-8b5cf6?style=for-the-badge)](./README.md#-skill-categories)&nbsp;
+[![](https://img.shields.io/badge/Zero_Setup-22c55e?style=for-the-badge)](./README.md#-quick-start)&nbsp;
+[![](https://img.shields.io/badge/Any_Industry-f59e0b?style=for-the-badge)](./README.md#why-these-skills-are-different)
+
+</div>
+
+---
 
 ## What's in this repo?
 
 A structured library of **skills** (reusable instruction sets) that Claude activates on demand to help with every stage of the analyst workflow: from data quality checks and deep-dive analysis, through documentation and dashboards, all the way to stakeholder communication.
 
-### Skill Map
+---
+
+## 🗺️ Skill Map
 
 ![Data Analytics Skill Map](./skill-map.svg)
 
 > [Open interactive version on Excalidraw](https://excalidraw.com/#json=wWcmLjEVHAYl4I4fynPSm,d8UC4Lexp2iSy5OPfIyJPQ)
 
+---
+
 ## Why these skills are different
 
-Traditional AI assistants require extensive upfront configuration — schemas, metric definitions, business rules — before they're useful. **These skills work on-demand:**
+> [!NOTE]
+> Traditional AI assistants require extensive upfront configuration — schemas, metric definitions, business rules — before they're useful. **These skills work on-demand.**
 
 | Traditional approach | These skills |
 |---------------------|--------------|
@@ -25,10 +45,15 @@ Traditional AI assistants require extensive upfront configuration — schemas, m
 
 Each skill asks targeted questions to gather exactly what it needs, then executes a complete, structured workflow.
 
+---
+
 ## 📚 Skill Categories
 
-### 01. Data Quality & Validation
-*Foundation — start here whenever you're working with new data*
+<details>
+<summary><b>🔍 01 &nbsp;·&nbsp; Data Quality & Validation</b> &nbsp;&nbsp; <code>5 skills</code></summary>
+<br>
+
+*Foundation — start here whenever you're working with new data.*
 
 | Skill | What it does |
 |-------|-------------|
@@ -38,8 +63,13 @@ Each skill asks targeted questions to gather exactly what it needs, then execute
 | **[schema-mapper](01-data-quality-validation/schema-mapper/)** | Understand database relationships and table structures |
 | **[metric-reconciliation](01-data-quality-validation/metric-reconciliation/)** | Investigate discrepancies between metric sources |
 
-### 02. Documentation & Knowledge
-*Build reusable context so you never explain the same thing twice*
+</details>
+
+<details>
+<summary><b>📝 02 &nbsp;·&nbsp; Documentation & Knowledge</b> &nbsp;&nbsp; <code>5 skills</code></summary>
+<br>
+
+*Build reusable context so you never explain the same thing twice.*
 
 | Skill | What it does |
 |-------|-------------|
@@ -49,8 +79,13 @@ Each skill asks targeted questions to gather exactly what it needs, then execute
 | **[sql-to-business-logic](02-documentation-knowledge/sql-to-business-logic/)** | Translate complex SQL into plain business language |
 | **[analysis-assumptions-log](02-documentation-knowledge/analysis-assumptions-log/)** | Track every assumption and decision in an analysis |
 
-### 03. Data Analysis & Investigation
-*Core workflows for the analytical heavy lifting*
+</details>
+
+<details>
+<summary><b>📊 03 &nbsp;·&nbsp; Data Analysis & Investigation</b> &nbsp;&nbsp; <code>7 skills</code></summary>
+<br>
+
+*Core workflows for the analytical heavy lifting.*
 
 | Skill | What it does |
 |-------|-------------|
@@ -62,8 +97,13 @@ Each skill asks targeted questions to gather exactly what it needs, then execute
 | **[ab-test-analysis](03-data-analysis-investigation/ab-test-analysis/)** | Rigorous experiment analysis with significance testing |
 | **[business-metrics-calculator](03-data-analysis-investigation/business-metrics-calculator/)** | Standard business metric calculation with benchmarks |
 
-### 04. Data Storytelling & Visualization
-*Turn raw findings into insights that drive decisions*
+</details>
+
+<details>
+<summary><b>🎨 04 &nbsp;·&nbsp; Data Storytelling & Visualization</b> &nbsp;&nbsp; <code>5 skills</code></summary>
+<br>
+
+*Turn raw findings into insights that drive decisions.*
 
 | Skill | What it does |
 |-------|-------------|
@@ -73,8 +113,13 @@ Each skill asks targeted questions to gather exactly what it needs, then execute
 | **[dashboard-specification](04-data-storytelling-visualization/dashboard-specification/)** | Full dashboard requirements with metrics and layout |
 | **[data-narrative-builder](04-data-storytelling-visualization/data-narrative-builder/)** | Craft a compelling story arc from analytical findings |
 
-### 05. Stakeholder Communication
-*Bridge the gap between technical depth and business understanding*
+</details>
+
+<details>
+<summary><b>🤝 05 &nbsp;·&nbsp; Stakeholder Communication</b> &nbsp;&nbsp; <code>5 skills</code></summary>
+<br>
+
+*Bridge the gap between technical depth and business understanding.*
 
 | Skill | What it does |
 |-------|-------------|
@@ -84,8 +129,13 @@ Each skill asks targeted questions to gather exactly what it needs, then execute
 | **[methodology-explainer](05-stakeholder-communication/methodology-explainer/)** | Explain analysis approach to any audience level |
 | **[impact-quantification](05-stakeholder-communication/impact-quantification/)** | Estimate and frame the business impact of findings |
 
-### 06. Workflow Optimization
-*Work smarter across every project*
+</details>
+
+<details>
+<summary><b>⚙️ 06 &nbsp;·&nbsp; Workflow Optimization</b> &nbsp;&nbsp; <code>4 skills</code></summary>
+<br>
+
+*Work smarter across every project.*
 
 | Skill | What it does |
 |-------|-------------|
@@ -94,9 +144,16 @@ Each skill asks targeted questions to gather exactly what it needs, then execute
 | **[peer-review-template](06-workflow-optimization/peer-review-template/)** | Structured peer review checklist for analytical work |
 | **[analysis-retrospective](06-workflow-optimization/analysis-retrospective/)** | Post-analysis learning and process improvement |
 
+</details>
+
+---
+
 ## 🚀 Quick Start
 
-**Pick a skill for your current task and describe what you need:**
+> [!TIP]
+> Describe your task to Claude naturally — it will select and activate the right skill automatically. No slash commands needed.
+
+**Example:**
 
 ```
 You:    "I need to understand why our activation rate dropped 12% last week"
@@ -118,6 +175,8 @@ Claude: [runs structured investigation with hypothesis testing]
 | Document your methodology | `analysis-documentation` + `analysis-assumptions-log` |
 | Start a complex analysis | `analysis-planning` first, always |
 
+---
+
 ## 📖 How skills work
 
 Each skill follows the same **on-demand context pattern**:
@@ -127,7 +186,10 @@ Each skill follows the same **on-demand context pattern**:
 3. **Surface assumptions** — anything uncertain is flagged, not silently assumed
 4. **Deliver a consistent output** — templated result you can share or iterate on
 
-Skills degrade gracefully: if you can't provide everything, Claude states what it's assuming and proceeds.
+> [!NOTE]
+> Skills degrade gracefully: if you can't provide everything, Claude states what it's assuming and proceeds.
+
+---
 
 ## 🛠️ Customization
 
@@ -144,6 +206,8 @@ skill-name/
 
 Claude will pull this context automatically when the skill runs.
 
+---
+
 ## 🎓 Suggested ramp-up
 
 **Week 1 — Get comfortable**
@@ -151,16 +215,20 @@ Claude will pull this context automatically when the skill runs.
 - Practice providing context when Claude asks
 - Use `analysis-planning` at the start of your next project
 
-**Week 2-3 — Add your core toolkit**
+**Week 2–3 — Add your core toolkit**
 - Set up `semantic-model-builder` for your key metrics (saves time forever)
 - Add `query-validation` to your SQL workflow
 - Pick 2 analysis skills that match your domain
 
 **Week 4+ — Go advanced**
-- Chain 4-5 skills end-to-end on a full project
+- Chain 4–5 skills end-to-end on a full project
 - Add company-specific references to the skills you use most
 - Build team context documents for shared onboarding
 
 ---
 
-**Version:** 1.1.0 | **Maintainer:** Nimrod Fisher | **Last Updated:** April 2026
+<div align="center">
+
+**Version:** 1.1.0 &nbsp;·&nbsp; **Maintainer:** Nimrod Fisher &nbsp;·&nbsp; **Last Updated:** April 2026
+
+</div>
